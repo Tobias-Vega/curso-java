@@ -7,10 +7,7 @@ public class HouseMain {
         myHouse.windows = 4;
         myHouse.size = 10;
 
-        House myHouse2 = new House();
-        myHouse2.doors = 4;
-        myHouse2.windows = 6;
-        myHouse2.size = 20;
+        House myHouse2 = new House(4, 6, 20);
 
         System.out.println("La cantidad de puertas de la casa es: " + myHouse2.doors);
         myHouse2.openDoor();

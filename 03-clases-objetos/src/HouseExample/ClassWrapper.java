@@ -6,5 +6,10 @@ public class ClassWrapper {
         Integer number2 = Integer.valueOf(30);
 
         System.out.println(number2);
+
+        if (true) {
+            // Solo es accesible dentro de este contexto o scope
+            Double size = 30.0;
+        }
     }
 }

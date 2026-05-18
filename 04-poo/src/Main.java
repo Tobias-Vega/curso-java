@@ -8,10 +8,21 @@ public class Main {
 //
 //        System.out.println(vehicle.toString());
 
-        Car myCar = new Car("Toyota", "Corolla", 2001, 4);
-        Motorcycle motorcycle = new Motorcycle("Honda", "CBR", 2021, false);
+        Vehicle myCar = new Car("Toyota", "Corolla", 2001, 4);
+        Vehicle motorcycle = new Motorcycle("Honda", "CBR", 2021, false);
 
         myCar.start();
         motorcycle.start();
+
+        printVehicle(myCar);
+        printVehicle(motorcycle);
+
+        ((Car)myCar).setDoors(5);
+
+        printVehicle(myCar);
+    }
+
+    public static void printVehicle(Vehicle vehicle) {
+        System.out.println(vehicle.toString());
     }
 }

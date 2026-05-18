@@ -9,18 +9,6 @@ public class Vehicle {
         this.year = year;
     }
 
-    public void start() {
-        System.out.println("Encendido el vehículo");
-    }
-
-    public void start(boolean silentMode) {
-        if (silentMode) {
-            System.out.println("Está encendido en modo silencioso");
-        } else {
-            System.out.println("Encendido el vehículo");
-        }
-    }
-
     public void stop() {
         System.out.println("El vehículo está parado");
     }

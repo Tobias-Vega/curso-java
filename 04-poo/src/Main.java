@@ -11,8 +11,8 @@ public class Main {
         Vehicle myCar = new Car("Toyota", "Corolla", 2001, 4);
         Vehicle motorcycle = new Motorcycle("Honda", "CBR", 2021, false);
 
-        myCar.start();
-        motorcycle.start();
+        ((Car)myCar).start();
+        ((Motorcycle)motorcycle).start();
 
         printVehicle(myCar);
         printVehicle(motorcycle);

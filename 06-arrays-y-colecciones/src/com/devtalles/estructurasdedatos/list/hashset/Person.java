@@ -26,6 +26,14 @@ public class Person {
         return Objects.hashCode(dni);
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", dni='" + dni + '\'' +
+                '}';
+    }
+
     public static void main(String[] args) {
         Set<Person> persons = new HashSet<>();
         Person person1 = new Person("María", "123");
@@ -33,13 +41,25 @@ public class Person {
         Person person3 = new Person("Ana2", "456");
         Person person4 = null;
 
+        // create
         persons.add(person1);
         persons.add(person2);
         persons.add(person3);
         persons.add(person4);
 
+        // read or list
+        System.out.println(persons);
+
         for (Person person : persons) {
             if (person != null) System.out.println(person.name);
         }
+
+        // delete
+        persons.remove(person2);
+        System.out.println(persons);
+
+        // update
+        persons.add(person3);
+        System.out.println(persons);
     }
 }

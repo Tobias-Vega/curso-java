@@ -1,4 +1,4 @@
-package com.devtalles.estructurasdedatos.list.equals;
+package com.devtalles.estructurasdedatos.equals;
 
 public class ExampleEquals {
     public static void main(String[] args) {

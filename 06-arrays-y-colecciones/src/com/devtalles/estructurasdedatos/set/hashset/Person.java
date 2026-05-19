@@ -1,7 +1,6 @@
-package com.devtalles.estructurasdedatos.list.LinkedHashSet;
+package com.devtalles.estructurasdedatos.set.hashset;
 
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -36,19 +35,17 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        Set<Person> persons = new LinkedHashSet<>();
+        Set<Person> persons = new HashSet<>();
         Person person1 = new Person("María", "123");
         Person person2 = new Person("Ana", "456");
         Person person3 = new Person("Ana2", "456");
         Person person4 = null;
-        Person person5 = new Person("María2", "1234");
 
         // create
         persons.add(person1);
         persons.add(person2);
         persons.add(person3);
         persons.add(person4);
-        persons.add(person5);
 
         // read or list
         System.out.println(persons);
@@ -64,8 +61,5 @@ public class Person {
         // update
         persons.add(person3);
         System.out.println(persons);
-
-        System.out.println(persons.contains(new Person("María", "1111")));
-        System.out.println(persons.contains(new Person("María", "123")));
     }
 }

@@ -1,4 +1,4 @@
-package com.devtalles.estructurasdedatos.list.equals;
+package com.devtalles.estructurasdedatos.equals;
 
 import java.util.Objects;
 

@@ -1,1 +1,9 @@
-Hola soy Tobías, estudiante de Java
+Throwable
+    |
+    | -- Exception (CheckedException)
+    |        | -- IOException
+    |        |       | -- FileNotFoundException
+    |
+    | -- RuntimeException (UncheckedException)
+            | -- NullPointerException
+            | -- ArithmeticException

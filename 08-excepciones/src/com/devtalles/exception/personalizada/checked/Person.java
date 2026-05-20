@@ -1,4 +1,4 @@
-package com.devtalles.exception.personalizada;
+package com.devtalles.exception.personalizada.checked;
 
 public class Person {
     private Integer age;

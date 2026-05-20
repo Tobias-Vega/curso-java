@@ -1,3 +1,5 @@
+package com.devtalles.exception.basic;
+
 public class Main {
 
     public static void recursive() {

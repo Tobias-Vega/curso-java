@@ -133,10 +133,10 @@ public class StudentRegistrationSystem {
                 found = true;
                 break;
             }
+        }
 
-            if (!found) {
-                throw new StudentNotFoundException("El estudiante no existe");
-            }
+        if (!found) {
+            throw new StudentNotFoundException("El estudiante no existe");
         }
     }
 

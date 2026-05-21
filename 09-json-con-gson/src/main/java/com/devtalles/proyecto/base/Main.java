@@ -1,5 +1,6 @@
-package com.devtalles.proyecto;
+package com.devtalles.proyecto.base;
 
+import com.devtalles.proyecto.Person;
 import com.google.gson.Gson;
 
 public class Main {

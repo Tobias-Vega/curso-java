@@ -1,1 +1,22 @@
-[{"name":"Fernando Gabriel","age":25,"student":false},{"name":"Juan","age":30,"student":true},{"name":"María","age":22,"student":true}]
+[
+  {
+    "name": "Fernando",
+    "age": 30,
+    "active": true,
+    "hobbies": [
+      "Correr",
+      "Crear contenido",
+      "Estudiar"
+    ]
+  },
+  {
+    "name": "Teddy",
+    "age": 30,
+    "active": true,
+    "hobbies": [
+      "Correr",
+      "Caminar",
+      "Tenis"
+    ]
+  }
+]

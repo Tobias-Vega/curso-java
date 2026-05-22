@@ -3,6 +3,7 @@
     "name": "Fernando",
     "age": 30,
     "active": true,
+    "email": "fernando@devtalles.com",
     "hobbies": [
       "Correr",
       "Crear contenido",
@@ -13,6 +14,7 @@
     "name": "Teddy",
     "age": 30,
     "active": true,
+    "email": "teddy@devtalles.com",
     "hobbies": [
       "Correr",
       "Caminar",

@@ -3,6 +3,7 @@ package com.devtalles.proyecto;
 public class Person {
     private String name;
     private Integer age;
+    private String email;
     private boolean student;
 
     public Person(String name, Integer age, boolean student) {
@@ -10,6 +11,14 @@ public class Person {
         this.age = age;
         this.student = student;
     }
+
+    public Person(String name, Integer age, String email, boolean student) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.student = student;
+    }
+
 
     public String getName() {
         return name;
@@ -31,15 +40,24 @@ public class Person {
         return student;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setStudent(boolean student) {
         this.student = student;
     }
 
     @Override
     public String toString() {
-        return "com.devtalles.proyecto.Person{" +
+        return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", email='" + email + '\'' +
                 ", student=" + student +
                 '}';
     }

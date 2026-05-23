@@ -20,11 +20,8 @@ public class TaskRepository {
 
 
     public void save(Task task) throws TaskException {
-        if (task == null) {
-            throw new TaskException("La tarea no puede ser nula");
-        }
 
-        if (findById(task.getId()) != null) {
+        if (tasks.contains(task)) {
             throw new TaskException("Ya existe una tarea con el ID: " + task.getId());
         }
 
@@ -40,6 +37,34 @@ public class TaskRepository {
 
         }
             return null;
+    }
+
+    public List<Task> findCompletedTasks() {
+
+        List<Task> completedTasks = new ArrayList<>();
+
+
+        for (Task task : tasks) {
+            if (task.getCompleted()) {
+                completedTasks.add(task);
+            }
+        }
+
+        return completedTasks;
+    }
+
+    public List<Task> findPendingTasks() {
+
+        List<Task> pendingTasks = new ArrayList<>();
+
+
+        for (Task task : tasks) {
+            if (!task.getCompleted()) {
+                pendingTasks.add(task);
+            }
+        }
+
+        return pendingTasks;
     }
 
     public void remove(String id) throws TaskException {
@@ -91,4 +116,16 @@ public class TaskRepository {
         tasks.set(index, updateTask);
         TaskPersistence.saveTasks(tasks);
     }
+
+    public void updateTaskCompleted(String id, Boolean completed) throws TaskException {
+        int index = findIndexById(id);
+
+        if (index == -1) {
+            throw new TaskException("El ID de la tarea a actualizar no existe");
+        }
+        tasks.get(index).setCompleted(completed);
+        TaskPersistence.saveTasks(tasks);
+    }
+
+
 }

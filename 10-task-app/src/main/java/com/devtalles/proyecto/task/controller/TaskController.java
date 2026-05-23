@@ -33,12 +33,25 @@ public class TaskController {
         return this.taskRepository.findAll();
     }
 
+    public List<Task> showCompletedTasks() {
+        return this.taskRepository.findCompletedTasks();
+    }
+
+    public List<Task> showPendingTasks() {
+        return this.taskRepository.findPendingTasks();
+    }
+
     public void updateTask(String id, String title, String description, Boolean completed) throws TaskException, TaskValidationException {
         validateTaskData(id, title, description, completed);
 
         Task updatedTask = new Task(id, title, description, completed);
 
         this.taskRepository.updateTask(updatedTask);
+    }
+
+    public void updateTaskCompleted(String id, Boolean completed) throws TaskException, TaskValidationException {
+        validateTaskData(id, completed);
+        this.taskRepository.updateTaskCompleted(id, completed);
     }
 
     private void validateTaskData(String id, String title, String description, Boolean completed) throws TaskValidationException {
@@ -60,7 +73,16 @@ public class TaskController {
             throw new TaskValidationException("El estado no puede ser nulo");
 
         }
+    }
 
+    private void validateTaskData(String id, Boolean completed) throws TaskValidationException {
+        if (id == null || id.trim().isEmpty()) {
+            throw new TaskValidationException("El id no puede estar vacío");
+        }
 
+        if (completed == null) {
+            throw new TaskValidationException("El estado no puede ser nulo");
+
+        }
     }
 }

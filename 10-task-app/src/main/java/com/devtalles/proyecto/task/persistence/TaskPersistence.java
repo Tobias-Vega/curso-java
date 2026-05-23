@@ -19,7 +19,7 @@ public class TaskPersistence {
         try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(tasks, writer);
         } catch (IOException e) {
-            throw new TaskException("Error crítico al guardar los datos en el disco: " + e.getMessage())
+            throw new TaskException("Error crítico al guardar los datos en el disco: " + e.getMessage());
         }
     }
 

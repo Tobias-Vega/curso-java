@@ -8,7 +8,7 @@ import java.util.List;
 public class TaskRepository {
     private List<Task> tasks = new ArrayList<>();
 
-    public void save(Task task) {
+    public void save(Task task) throws TaskException {
         if (task == null) {
             throw new TaskException("La tarea no puede ser nula");
         }
@@ -30,7 +30,7 @@ public class TaskRepository {
             return null;
     }
 
-    public void remove(String id) {
+    public void remove(String id) throws TaskException {
         Task task = findById(id);
         if (task == null) {
             throw new TaskException("El ID de la tarea a eliminar no existe");
@@ -39,7 +39,7 @@ public class TaskRepository {
         tasks.remove(task);
     }
 
-    public void remove(Task task) {
+    public void remove(Task task) throws TaskException {
         if (task == null) {
             throw new TaskException("La tarea no puede ser nula");
         }
@@ -62,7 +62,7 @@ public class TaskRepository {
         return -1;
     }
 
-    public void updateTask(Task updateTask) {
+    public void updateTask(Task updateTask) throws TaskException {
 
         if (updateTask == null ) {
             throw new TaskException("La tarea no puede ser nula");

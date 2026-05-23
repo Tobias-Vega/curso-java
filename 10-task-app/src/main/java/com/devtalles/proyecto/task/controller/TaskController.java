@@ -57,7 +57,7 @@ public class TaskController {
         }
 
         if (completed == null) {
-            throw new TaskValidationException("El id no puede ser nulo");
+            throw new TaskValidationException("El estado no puede ser nulo");
 
         }
 

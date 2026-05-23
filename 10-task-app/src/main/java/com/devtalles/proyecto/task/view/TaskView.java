@@ -43,6 +43,7 @@ public class TaskView {
                     break;
                 case "5":
                     System.out.println("Saliendo del sistema");
+                    scanner.close();
                     return;
                 default:
                     System.out.println("Opción no valida, intente nuevamente");
@@ -94,8 +95,6 @@ public class TaskView {
             for (Task task : tasks) {
                 System.out.println(task.toString());
             }
-
-            System.out.println("Tarea eliminada correctamente");
         } catch (Exception e) {
             System.out.println("Error inesperado. Contacte con el soporte");
             e.printStackTrace();
@@ -108,7 +107,7 @@ public class TaskView {
             Task task = getTaskInput();
             taskController.updateTask(task.getId(), task.getTitle(), task.getDescription(), task.getCompleted());
             System.out.println("Tarea actualizada correctamente");
-        } catch (TaskException e) {
+        } catch (TaskException | TaskValidationException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Error inesperado. Contacte con el soporte");
@@ -117,17 +116,54 @@ public class TaskView {
     }
 
     private Task getTaskInput() {
-        System.out.println("Ingresar ID: ");
-        String id = scanner.nextLine();
 
-        System.out.println("Ingrese el título: ");
-        String title = scanner.nextLine();
+        String id;
+        String title;
+        String description;
+        Boolean completed = null;
 
-        System.out.println("Ingresar la descripción: ");
-        String description = scanner.nextLine();
+        do {
+            System.out.println("Ingresar ID: ");
+            id = scanner.nextLine();
 
-        System.out.println("¿Está completada? (true/false): ");
-        Boolean completed = Boolean.parseBoolean(scanner.nextLine());
+            if (id.isEmpty()) {
+                System.out.println("El id no puede estar vacío");
+            }
+
+        } while (id.isEmpty());
+
+        do {
+            System.out.println("Ingresar el título: ");
+            title = scanner.nextLine();
+
+            if (title.isEmpty()) {
+                System.out.println("El título no puede estar vacío");
+            }
+
+        } while (title.isEmpty());
+
+        do {
+            System.out.println("Ingresar la descripción: ");
+            description = scanner.nextLine();
+
+            if (description.isEmpty()) {
+                System.out.println("La descripción no puede estar vacía");
+            }
+
+        } while (description.isEmpty());
+
+        while (completed == null) {
+            System.out.println("¿Está completada? (true/false): ");
+            String input = scanner.nextLine().trim().toLowerCase();
+
+            if (input.equals("true")) {
+                completed = true;
+            } else if (input.equals("false")) {
+                completed = false;
+            } else {
+                System.out.println("El valor ingresado no es correcto, ingrese 'true' o 'false'");
+            }
+        }
 
         return new Task(id, title, description, completed);
     }

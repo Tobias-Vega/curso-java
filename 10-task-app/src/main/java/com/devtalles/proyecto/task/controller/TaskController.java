@@ -6,6 +6,7 @@ import com.devtalles.proyecto.task.model.Task;
 import com.devtalles.proyecto.task.model.TaskRepository;
 
 import java.util.List;
+import java.util.TreeSet;
 
 public class TaskController {
     private final TaskRepository taskRepository;
@@ -19,7 +20,6 @@ public class TaskController {
         Task task = new Task(id, title, description,completed);
 
         this.taskRepository.save(task);
-        System.out.println("La tarea fue agregada exitosamente");
     }
 
     public void removeTask(String id) throws TaskValidationException, TaskException {
@@ -29,24 +29,13 @@ public class TaskController {
         this.taskRepository.remove(id);
     }
 
-    public void showsTasks() {
-        List<Task> tasks = this.taskRepository.findAll();
-
-        if (tasks.isEmpty()) {
-            return;
-        }
-
-        for (Task task : tasks) {
-            System.out.println(task);
-        }
+    public List<Task> showTasks() {
+        return this.taskRepository.findAll();
     }
 
-    public void updateTask(String id, String title, String description, Boolean completed) throws TaskException {
-        try {
-            validateTaskData(id, title, description, completed);
-        } catch (TaskValidationException e) {
-            throw new RuntimeException(e);
-        }
+    public void updateTask(String id, String title, String description, Boolean completed) throws TaskException, TaskValidationException {
+        validateTaskData(id, title, description, completed);
+
         Task updatedTask = new Task(id, title, description, completed);
 
         this.taskRepository.updateTask(updatedTask);

@@ -1,12 +1,23 @@
 package com.devtalles.proyecto.task.model;
 
 import com.devtalles.proyecto.task.exceptions.TaskException;
+import com.devtalles.proyecto.task.persistence.TaskPersistence;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TaskRepository {
-    private List<Task> tasks = new ArrayList<>();
+    private List<Task> tasks;
+
+    public TaskRepository() {
+        try {
+            tasks = TaskPersistence.loadTasks();
+        } catch (TaskException e) {
+            System.err.println("Advertencia: " + e.getMessage());
+            tasks = new java.util.ArrayList<>();
+        }
+    }
+
 
     public void save(Task task) throws TaskException {
         if (task == null) {
@@ -18,6 +29,7 @@ public class TaskRepository {
         }
 
         tasks.add(task);
+        TaskPersistence.saveTasks(tasks);
     }
 
     public Task findById(String id) {
@@ -37,6 +49,7 @@ public class TaskRepository {
         }
 
         tasks.remove(task);
+        TaskPersistence.saveTasks(tasks);
     }
 
     public void remove(Task task) throws TaskException {
@@ -47,6 +60,8 @@ public class TaskRepository {
         if(!tasks.remove(task)) {
             throw new TaskException("La tarea no existe en la lista");
         }
+
+        TaskPersistence.saveTasks(tasks);
     }
 
     public List<Task> findAll() {
@@ -74,5 +89,6 @@ public class TaskRepository {
         }
 
         tasks.set(index, updateTask);
+        TaskPersistence.saveTasks(tasks);
     }
 }
